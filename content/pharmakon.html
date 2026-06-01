@@ -1,0 +1,363 @@
+<!--sophist
+title: 解药即毒药
+source_ai: Claude
+date_discussed: 2026-06-01
+themes: [语言哲学, 技术哲学, 解构]
+thinkers: [柏拉图, 德里达, 斯蒂格勒]
+abstract: 一个同时意味着解药、毒药与替罪羊的希腊词，它的全部力量，恰恰在于无法被决断成其中任何一个。
+status: open
+-->
+<!DOCTYPE html>
+<html lang="zh" data-mode="remedy">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>φάρμακον · Pharmakon — 解药即毒药</title>
+<meta name="description" content="Pharmakon（φάρμακον）：古希腊语中同时意味着解药、毒药与替罪羊的词。从柏拉图《斐德罗篇》到德里达、斯蒂格勒，一个无法被决断的词。" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Spectral:ital,wght@0,300;0,400;0,500;1,400&family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* remedy pole — warm gold / apothecary amber */
+    --r-bg: #100c07;
+    --r-bg2: #1a130b;
+    --r-ink: #f4ead6;
+    --r-mute: #b6a386;
+    --r-accent: #d9a443;
+    --r-accent2: #e8c878;
+    --r-glow: rgba(217,164,67,.35);
+
+    /* poison pole — toxic verdigris / nightshade */
+    --p-bg: #060b09;
+    --p-bg2: #0a1410;
+    --p-ink: #e3f0e4;
+    --p-mute: #7f9a87;
+    --p-accent: #58c08a;
+    --p-accent2: #9fe6b4;
+    --p-glow: rgba(88,192,138,.32);
+
+    /* active (set by mode) */
+    --bg: var(--r-bg);
+    --bg2: var(--r-bg2);
+    --ink: var(--r-ink);
+    --mute: var(--r-mute);
+    --accent: var(--r-accent);
+    --accent2: var(--r-accent2);
+    --glow: var(--r-glow);
+
+    --serif: 'Cormorant', Georgia, serif;
+    --display: 'Cormorant Garamond', 'Cormorant', serif;
+    --body: 'Spectral', Georgia, serif;
+    --ease: cubic-bezier(.22,.61,.36,1);
+  }
+
+  html[data-mode="poison"] {
+    --bg: var(--p-bg); --bg2: var(--p-bg2); --ink: var(--p-ink);
+    --mute: var(--p-mute); --accent: var(--p-accent);
+    --accent2: var(--p-accent2); --glow: var(--p-glow);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background:
+      radial-gradient(120% 80% at 50% -10%, var(--bg2) 0%, var(--bg) 55%) fixed,
+      var(--bg);
+    color: var(--ink);
+    font-family: var(--body);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    transition: color .9s var(--ease), background .9s var(--ease);
+  }
+
+  /* grain overlay */
+  body::after {
+    content: "";
+    position: fixed; inset: 0; pointer-events: none; z-index: 9;
+    opacity: .045; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  ::selection { background: var(--accent); color: var(--bg); }
+
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 28px; }
+
+  /* ============ TOGGLE ============ */
+  .toggle-bar {
+    position: fixed; top: 22px; left: 50%; transform: translateX(-50%);
+    z-index: 20; display: flex; align-items: center; gap: 14px;
+    padding: 8px 10px; border-radius: 100px;
+    background: color-mix(in srgb, var(--bg) 72%, transparent);
+    border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 12px 40px rgba(0,0,0,.45);
+    font-family: var(--serif);
+  }
+  .toggle-bar button {
+    appearance: none; border: 0; cursor: pointer; background: transparent;
+    color: var(--mute); font-family: var(--serif); font-size: 15px;
+    letter-spacing: .14em; text-transform: uppercase; padding: 6px 16px;
+    border-radius: 100px; transition: color .4s, background .4s;
+  }
+  .toggle-bar button[aria-pressed="true"] {
+    color: var(--bg); background: var(--accent);
+  }
+  .toggle-bar .sep { width: 1px; height: 18px; background: color-mix(in srgb, var(--mute) 40%, transparent); }
+
+  /* ============ HERO ============ */
+  header.hero {
+    min-height: 100svh; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center;
+    position: relative; padding: 120px 24px 80px;
+  }
+  .eyebrow {
+    font-family: var(--serif); font-size: 15px; letter-spacing: .42em;
+    text-transform: uppercase; color: var(--mute);
+    opacity: 0; animation: rise 1s var(--ease) .15s forwards;
+  }
+  .glyph {
+    font-family: var(--display); font-weight: 600;
+    font-size: clamp(64px, 17vw, 200px); line-height: .92;
+    letter-spacing: -.01em; margin: 18px 0 6px;
+    color: var(--accent2);
+    text-shadow: 0 0 60px var(--glow);
+    opacity: 0; animation: rise 1.1s var(--ease) .3s forwards;
+    transition: color .9s var(--ease), text-shadow .9s var(--ease);
+  }
+  .romanize {
+    font-family: var(--display); font-style: italic; font-weight: 400;
+    font-size: clamp(28px, 6vw, 54px); color: var(--ink); letter-spacing: .02em;
+    opacity: 0; animation: rise 1s var(--ease) .45s forwards;
+  }
+  .dual {
+    margin-top: 34px; display: flex; align-items: center; gap: clamp(14px,4vw,40px);
+    font-family: var(--serif); text-transform: uppercase; letter-spacing: .22em;
+    font-size: clamp(13px, 2.4vw, 19px);
+    opacity: 0; animation: rise 1s var(--ease) .62s forwards;
+  }
+  .dual span { color: var(--mute); transition: color .9s; }
+  .dual .arrow { color: var(--accent); font-size: 1.5em; transform: translateY(-1px); }
+  html[data-mode="remedy"] .dual .w-remedy { color: var(--accent2); }
+  html[data-mode="poison"] .dual .w-poison { color: var(--accent2); }
+  .scroll-hint {
+    position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+    font-family: var(--serif); font-size: 13px; letter-spacing: .3em;
+    text-transform: uppercase; color: var(--mute);
+    opacity: 0; animation: fade 1s ease 1.4s forwards;
+  }
+  .scroll-hint::after {
+    content: ""; display: block; width: 1px; height: 40px; margin: 12px auto 0;
+    background: linear-gradient(var(--accent), transparent);
+    animation: drip 2.4s var(--ease) infinite;
+  }
+
+  /* ============ SECTIONS ============ */
+  section { padding: clamp(60px, 11vh, 130px) 0; position: relative; }
+  .lead {
+    font-family: var(--display); font-weight: 400;
+    font-size: clamp(26px, 4.6vw, 46px); line-height: 1.28;
+    letter-spacing: -.005em; max-width: 820px;
+  }
+  .lead em { font-style: italic; color: var(--accent2); }
+  .kicker {
+    font-family: var(--serif); font-size: 14px; letter-spacing: .34em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 22px;
+    display: flex; align-items: center; gap: 14px;
+  }
+  .kicker::before { content:""; width: 38px; height: 1px; background: var(--accent); display:block; }
+  p.body { font-size: clamp(17px, 2.3vw, 20px); color: var(--ink); max-width: 680px; margin-top: 22px; }
+  p.body + p.body { margin-top: 18px; }
+  .body .muted { color: var(--mute); }
+  .gk { font-family: var(--display); font-style: italic; color: var(--accent2); }
+
+  /* three faces */
+  .faces { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+    background: color-mix(in srgb, var(--mute) 22%, transparent);
+    border: 1px solid color-mix(in srgb, var(--mute) 22%, transparent);
+    border-radius: 4px; overflow: hidden; margin-top: 14px; }
+  .face { background: var(--bg); padding: 38px 30px 42px; transition: background .5s; }
+  .face:hover { background: var(--bg2); }
+  .face .num { font-family: var(--display); font-style: italic; color: var(--accent); font-size: 20px; }
+  .face h3 { font-family: var(--display); font-weight: 600; font-size: clamp(28px,4vw,40px);
+    margin: 6px 0 4px; color: var(--ink); }
+  .face .gr { font-family: var(--display); font-style: italic; color: var(--mute); font-size: 17px; margin-bottom: 16px; }
+  .face p { font-size: 16px; color: var(--mute); line-height: 1.65; }
+  @media (max-width: 720px){ .faces { grid-template-columns: 1fr; } }
+
+  /* quote block */
+  .quote { border-left: 2px solid var(--accent); padding: 6px 0 6px 28px; margin: 38px 0;
+    max-width: 760px; }
+  .quote q { font-family: var(--display); font-style: italic; font-size: clamp(21px,3.2vw,30px);
+    line-height: 1.4; color: var(--ink); quotes: "“" "”"; }
+  .quote .cite { display: block; margin-top: 16px; font-family: var(--serif);
+    letter-spacing: .12em; text-transform: uppercase; font-size: 13px; color: var(--mute); }
+
+  .divider { width: 100%; height: 1px; margin: 0 auto;
+    background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent) 55%, transparent), transparent); }
+
+  /* reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 1s var(--ease), transform 1s var(--ease); }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* footer */
+  footer { padding: 80px 0 70px; text-align: center; }
+  footer .glyph-sm { font-family: var(--display); font-size: 48px; color: var(--accent2); text-shadow: 0 0 40px var(--glow); }
+  footer p { color: var(--mute); font-family: var(--serif); letter-spacing: .14em;
+    text-transform: uppercase; font-size: 13px; margin-top: 14px; }
+  footer .meta { margin-top: 26px; font-family: var(--body); text-transform: none; letter-spacing: 0; font-size: 14px; color: color-mix(in srgb,var(--mute) 75%, transparent); }
+
+  @keyframes rise { from { opacity: 0; transform: translateY(30px);} to { opacity:1; transform:none; } }
+  @keyframes fade { to { opacity: 1; } }
+  @keyframes drip { 0%{ transform: scaleY(0); transform-origin: top; opacity:0;}
+    35%{ opacity:1;} 70%{ transform: scaleY(1); transform-origin: top; opacity:1;}
+    100%{ transform: scaleY(1); transform-origin: bottom; opacity:0;} }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation: none !important; transition: none !important; }
+    .reveal{ opacity:1; transform:none; }
+  }
+</style>
+</head>
+<body>
+
+  <a href="index.html" style="position:fixed;top:26px;left:26px;z-index:30;font-family:'Cormorant',serif;font-size:15px;letter-spacing:.14em;color:var(--mute);text-decoration:none">← Sophist</a>
+
+  <nav class="toggle-bar" aria-label="在解药与毒药之间切换">
+    <button data-mode="remedy" aria-pressed="true">解药 Remedy</button>
+    <span class="sep"></span>
+    <button data-mode="poison" aria-pressed="false">毒药 Poison</button>
+  </nav>
+
+  <header class="hero">
+    <p class="eyebrow">古希腊语 · ΦΆΡΜΑΚΟΝ</p>
+    <h1 class="glyph">φάρμακον</h1>
+    <div class="romanize">phármakon</div>
+    <div class="dual">
+      <span class="w-remedy">解药</span>
+      <span class="arrow">⇌</span>
+      <span class="w-poison">毒药</span>
+    </div>
+    <div class="scroll-hint">向下</div>
+  </header>
+
+  <main>
+    <section>
+      <div class="wrap reveal">
+        <p class="lead">一个词，同时意味着 <em>治愈的解药</em>、<em>致命的毒药</em>，以及被驱逐的 <em>替罪羊</em>。它的全部力量，恰恰在于无法被决断成其中任何一个。</p>
+      </div>
+    </section>
+
+    <div class="wrap"><div class="divider"></div></div>
+
+    <section>
+      <div class="wrap reveal">
+        <div class="kicker">词源 · Etymology</div>
+        <p class="body">古希腊语 <span class="gk">φάρμακον</span>（phármakon）的词根，泛指一切能改变身体与心灵状态的 <span class="muted">物质</span>——药剂、染料、香料、符咒。它不预设善恶：同一株草，剂量是解药，过量是毒药。</p>
+        <p class="body">由它派生出今天的 <span class="gk">pharmacy</span>（药房）、<span class="gk">pharmacology</span>（药理学）。我们把它窄化成了「药」，却丢掉了那个原始的、悬而未决的双重性。</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap reveal">
+        <div class="kicker">三张面孔 · Three Faces</div>
+        <div class="faces">
+          <div class="face">
+            <div class="num">i.</div>
+            <h3>解药</h3>
+            <div class="gr">remedy · cure</div>
+            <p>治疗、缓解、修复。带来秩序与健康的那一面——技术、文字、制度被发明时所许诺的善。</p>
+          </div>
+          <div class="face">
+            <div class="num">ii.</div>
+            <h3>毒药</h3>
+            <div class="gr">poison · venom</div>
+            <p>损害、麻痹、瓦解。同一事物失控、过量、被滥用时的另一面——许诺背面的代价。</p>
+          </div>
+          <div class="face">
+            <div class="num">iii.</div>
+            <h3>替罪羊</h3>
+            <div class="gr">pharmakós · scapegoat</div>
+            <p>古希腊城邦在灾年驱逐的「替罪者」。共同体把毒素投射到一个身上，再将其放逐，以求净化自身。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap"><div class="divider"></div></div>
+
+    <section>
+      <div class="wrap reveal">
+        <div class="kicker">柏拉图《斐德罗篇》· Plato</div>
+        <p class="body">在《斐德罗篇》里，苏格拉底讲了一个神话：埃及神 Theuth 把 <span class="muted">文字</span> 献给国王，称它是记忆的 <span class="gk">pharmakon</span>——一剂良药。国王 Thamus 却回答：恰恰相反，它是毒药。</p>
+        <p class="body">因为文字让人依赖外在的符号，不再向内记诵，记忆于是萎缩。<span class="muted">同一份礼物，发明者说是解药，国王说是毒药。文本本身从不替我们决断。</span></p>
+        <div class="quote">
+          <q>他们将信赖书写，依靠外来的符号去回忆，而不再凭自身向内记起。</q>
+          <span class="cite">— 柏拉图《斐德罗篇》 274e–275a</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap reveal">
+        <div class="kicker">德里达 · Derrida</div>
+        <p class="body">1968 年，德里达在《柏拉图的药》中指出：希腊文里 pharmakon 始终是 <em class="gk">一个</em> 词，而历代译者却按上下文，时而译成「解药」、时而译成「毒药」，悄悄抹平了它的歧义。</p>
+        <p class="body">这种 <span class="muted">无法决断（undecidable）</span> 不是翻译的疏漏，而是语言的本相。Pharmakon 拒绝落入非此即彼——它就停在两者之间，成为德里达解构形而上学二元对立的关键样本。</p>
+        <div class="quote">
+          <q>这个 pharmakon，这剂「药」，这帖既是良方又是毒物的汤剂，已经带着它全部的暧昧渗入身体。</q>
+          <span class="cite">— Jacques Derrida《Plato's Pharmacy》</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap reveal">
+        <div class="kicker">斯蒂格勒 · 技术即药 · Stiegler</div>
+        <p class="body">哲学家斯蒂格勒把 pharmakon 推向了 <span class="muted">所有技术</span>：每一项技术——文字、印刷、屏幕、算法——都同时是解药与毒药。它扩展我们，也外包并侵蚀我们的某种能力。</p>
+        <p class="body">于是问题从不是「它好还是坏」，而是一门 <em>药理学</em>：在何种剂量、何种照料、何种制度下，它偏向治愈而非中毒。</p>
+      </div>
+    </section>
+
+    <div class="wrap"><div class="divider"></div></div>
+
+    <section>
+      <div class="wrap reveal">
+        <div class="kicker">今天 · The Pharmakon Now</div>
+        <p class="lead">社交媒体、推荐算法、生成式 AI——我们这个时代最强的 <em>pharmaka</em>。</p>
+        <p class="body">它们既是连接与认知的解药，也是注意力与判断力的毒药；而当出事时，我们又急于找一个 <span class="muted">替罪羊</span> 去驱逐。三张面孔，从未分开过。</p>
+        <p class="body muted">读懂 pharmakon，就是学会与「无法决断」共处：不急着判好坏，而去追问剂量、语境与照料。</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap reveal">
+      <div class="glyph-sm">φ</div>
+      <p>解药即毒药 · Remedy is Poison</p>
+      <div class="meta">点上方按钮，让整页在「解药」与「毒药」之间切换——因为它本就同时是两者。</div>
+    </div>
+  </footer>
+
+<script>
+  // duality toggle — morphs the whole palette between remedy & poison
+  const root = document.documentElement;
+  document.querySelectorAll('.toggle-bar button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const mode = btn.dataset.mode;
+      root.setAttribute('data-mode', mode);
+      document.querySelectorAll('.toggle-bar button').forEach(b =>
+        b.setAttribute('aria-pressed', String(b === btn)));
+    });
+  });
+
+  // scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.18 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
