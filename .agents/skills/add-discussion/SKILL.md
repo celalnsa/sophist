@@ -57,3 +57,32 @@ Do **not** add per-page styles. Edit:
 Keep the temperament: dark background, classical serif display (Fraunces) +
 literary body (Newsreader), one warm-brass accent, generous space, restrained
 motion — an intellectual / 哲思 feel.
+
+## The writing bar (non-negotiable — set by the user)
+
+This is an archive of *thought*, not a summary dump. Each piece must:
+
+- **Be a real essay, not a template.** Do NOT use a fixed 缘起/关键概念/论证脉络/结论
+  scaffold — that reads utilitarian and 世俗. Let structure grow from the idea.
+  Minimum is title + flowing content.
+- **Stage two voices genuinely arguing** (a dialectic in one head), and expand /
+  deepen the thought rather than restate it. It's fine to go beyond a source export.
+- **Be poetic and restrained.** Titles like 「解药即毒药」「燃料」「不争」「未经同意的降生」
+  — short, paradoxical, 留白; never paper-like or colloquial or AI-slop.
+
+Markdown helpers available in the literary template (write as raw HTML inside the .md,
+with a blank line around each block):
+
+- `<p class="lede">…</p>` — opening line, set larger in display serif.
+- `<p class="counter">…</p>` — the counter-voice (brass left-rule, italic).
+- `<p class="pull">…</p>` — a centered pull-line.
+
+When a topic deserves its own form/feel, make it a bespoke `.html` (see
+`system-as-fuel.html` 燃料, `non-contention.html` 不争, `pharmakon.html`) — own
+layout, palette, even interactions. Give it its own accent so it has an identity.
+
+## YAML pitfall (this WILL bite)
+
+A frontmatter value (esp. `title`/`abstract`) must **not start with an ASCII `"`** —
+YAML reads it as a quoted scalar and the build crashes. Use fullwidth quotes “ ” or
+「 」 instead. Same for `.html` files' `<!--sophist ... -->` metadata block.
