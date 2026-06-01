@@ -1,0 +1,129 @@
+<!--sophist
+title: 燃料
+source_ai: ChatGPT
+date_discussed: 2024-2026
+themes: [社会系统, 人生意义, 虚无主义]
+thinkers: []
+abstract: 如果我参与的，是一台把我当燃料的机器——它给我的回报，值得我的生命吗？
+status: open
+-->
+<!DOCTYPE html>
+<html lang="zh" class="no-js">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>燃料 · Sophist</title>
+<meta name="description" content="如果我参与的，是一台把我当燃料的机器——它给我的回报，值得我的生命吗？" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="theme/theme.css" />
+<style>
+  /* this page burns a different color than the rest of the archive */
+  html[data-mode] { --ember: #d9622b; --ember-soft: #f0a35e; --ash: #6f6357; }
+  body { background:
+      radial-gradient(120% 80% at 50% 118%, #1c1109 0%, rgba(28,17,9,0) 46%) fixed,
+      radial-gradient(130% 90% at 50% -15%, var(--ink-2) 0%, var(--ink) 58%) fixed,
+      var(--ink); }
+  ::selection { background: var(--ember); color: var(--ink); }
+
+  .furnace { max-width: 760px; margin: 0 auto; padding: 0 30px; }
+
+  /* hero */
+  .open { padding: clamp(80px,16vh,180px) 0 clamp(40px,7vh,80px); }
+  .open .glyph { font-family: var(--display); font-weight: 400;
+    font-size: clamp(90px,22vw,230px); line-height: .9; color: var(--ember-soft);
+    text-shadow: 0 0 80px rgba(217,98,43,.4); letter-spacing: -.02em;
+    opacity: 0; animation: emberrise 1.4s var(--ease) .2s forwards; }
+  .open .question { font-family: var(--display); font-style: italic; font-weight: 400;
+    font-size: clamp(20px,3vw,30px); line-height: 1.45; color: var(--paper-soft);
+    max-width: 30ch; margin-top: 30px;
+    opacity: 0; animation: emberrise 1.2s var(--ease) .5s forwards; }
+
+  /* the essay — two voices, then a merging */
+  .body { padding-bottom: 40px; font-size: 20px; line-height: 1.82; color: var(--paper); }
+  .body p { margin: 22px 0; }
+  .body .lede { font-family: var(--display); font-size: clamp(23px,3.4vw,30px);
+    font-weight: 400; line-height: 1.4; color: var(--paper); }
+
+  /* voice one: the refusal — plain, hard */
+  .v1 { }
+  /* voice two: the answer that won't let it off easy — set apart, italic, an ember rule */
+  .v2 { border-left: 2px solid var(--ember); padding-left: 28px; margin: 30px 0;
+    font-family: var(--display); font-style: italic; font-size: clamp(20px,2.8vw,25px);
+    line-height: 1.5; color: var(--paper-soft); }
+
+  .turn { color: var(--ember-soft); font-style: italic; }
+  .body em { color: var(--paper-soft); }
+
+  .pull { font-family: var(--display); font-weight: 400; font-style: italic;
+    font-size: clamp(26px,4.4vw,40px); line-height: 1.32; color: var(--ember-soft);
+    margin: 56px 0; text-align: center; max-width: 18ch; margin-left: auto; margin-right: auto; }
+
+  .ash { color: var(--ash); }
+
+  /* a single drifting ember, very faint */
+  .spark { position: fixed; left: 50%; bottom: -10px; width: 3px; height: 3px;
+    border-radius: 50%; background: var(--ember-soft); box-shadow: 0 0 8px 2px rgba(240,163,94,.6);
+    pointer-events: none; opacity: 0; animation: drift 7s linear infinite; z-index: 1; }
+
+  @keyframes emberrise { from { opacity:0; transform: translateY(26px);} to {opacity:1; transform:none;} }
+  @keyframes drift {
+    0% { transform: translate(0,0) scale(1); opacity: 0; }
+    12% { opacity: .8; }
+    100% { transform: translate(-40px,-92vh) scale(.3); opacity: 0; }
+  }
+  @media (prefers-reduced-motion: reduce){ *{animation:none!important} .open .glyph,.open .question{opacity:1} .spark{display:none} }
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.remove('no-js');document.documentElement.setAttribute('data-mode','ember');</script>
+
+<div class="wrap">
+  <header class="masthead">
+    <a class="brand" href="index.html">Sophist <span class="gk">σοφιστής</span></a>
+    <nav><a href="index.html">目录 · index</a></nav>
+  </header>
+</div>
+
+<div class="spark"></div>
+
+<main class="furnace">
+  <section class="open">
+    <div class="glyph">燃料</div>
+    <p class="question">如果我参与的，是一台把我当燃料的机器——<br>它给我的回报，值得我的生命吗？</p>
+  </section>
+
+  <article class="body">
+    <p class="lede">你坐进去的时候，以为自己是操作机器的人。很久以后才起疑：也许我一直是被烧掉的那一部分。</p>
+
+    <p class="v1">这台机器靠抽取运转。任务、排名、积分、手续费、注意力——它把一段生命切成可计量的单位，再从每一个单位里悄悄抽走一点。如果它给你的回报，只够让你有力气交出下一份回报，那么这桩交易的真相是：你的命，被标价成了柴。看清了，就该退出。</p>
+
+    <p class="v2">可是退到哪里去呢。退出一台机器，只是走进另一台。归隐是一种系统，清高也会被计价，连"我不玩了"都能被收编成一种姿态、一个标签、一段更稀缺因而更值钱的人设。没有"系统之外"那个干净的位置等着你。火无处不在——所以问题从来就不是烧、还是不烧。</p>
+
+    <p>那问题是什么。</p>
+
+    <p>也许，<span class="turn">燃料与火的分别，不在于你是否被消耗</span>——被消耗是必然的，没有谁能不被这个世界用掉一些。分别在于：烧过之后，留下了什么。同样一根柴，有的烧尽只余冷灰；有的把热传给了下一样东西；有的在燃烧的那一刻，照亮过一张脸。都被烧，有人只是变少，有人成了光。</p>
+
+    <p class="pull">带得走的，是火。<br>只能在炉里兑换的，是灰。</p>
+
+    <p>所以判断一台机器值不值得喂，不该看它许诺多少奖励，而该看：在它里面，你是否积累了可以带走的东西——能力、作品、理解、关系，以及最要紧的，自由。这些是火，离开这座炉子它们仍在你手里燃烧。而积分、头衔、排名、那种"再来一局"的痒——是灰，出了炉门就凉。<span class="ash">机器最擅长的，就是把灰包装成火给你看。</span></p>
+
+    <p>有人安慰说，等机器替我们生产一切，人就不必再做燃料了。可稀缺不会消失，它只会搬家：从粮食、土地，搬到注意力、地位、被看见、被记得。炉子换了燃料的名字，火照旧在烧。指望某一天彻底走出燃烧，是另一种天真。</p>
+
+    <p>于是那个问题，其实没有答案，只有一种姿态——</p>
+
+    <p class="v2">清醒地知道自己正身处炉中，而仍然选择，把自己的热留给值得的东西。不是逃出燃烧，是决定为什么燃烧。</p>
+
+    <p>柴薪不能选择火。人能。<br><span class="ash">这道由我们自己决定的窄缝，大概就是燃料与火之间，唯一属于人的地方。</span></p>
+  </article>
+</main>
+
+<div class="wrap">
+  <footer class="site-foot">
+    <span><a href="index.html">← 回到目录</a></span>
+    <span class="gk">πάντα ῥεῖ</span>
+  </footer>
+</div>
+</body>
+</html>
