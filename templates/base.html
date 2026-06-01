@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh" class="no-js">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>{% block title %}Sophist{% endblock %}</title>
+<meta name="description" content="{% block description %}Sophist · 思辨对话录 —— 与机器关于最古老问题的对话档案。{% endblock %}" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ rel }}theme/theme.css" />
+{% block head_extra %}{% endblock %}
+</head>
+<body>
+<script>document.documentElement.classList.remove('no-js');</script>
+
+<div class="wrap">
+  <header class="masthead">
+    <a class="brand" href="{{ rel }}index.html">Sophist <span class="gk">σοφιστής</span></a>
+    <nav><a href="{{ rel }}index.html">目录 · index</a></nav>
+  </header>
+</div>
+
+{% block content %}{% endblock %}
+
+<div class="wrap">
+  <footer class="site-foot">
+    <span>Sophist · 思辨对话录</span>
+    <span class="gk">γνῶθι σεαυτόν</span>
+  </footer>
+</div>
+
+<script>
+  const io = new IntersectionObserver((es) => {
+    es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+{% block scripts %}{% endblock %}
+</body>
+</html>

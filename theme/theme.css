@@ -1,0 +1,133 @@
+/* =====================================================================
+   Sophist — shared theme
+   The single source of visual truth. Every page (index + each discussion)
+   links this file, so adding a new page is automatically on-brand.
+   Tune palette/typography here once; the whole site follows.
+   ===================================================================== */
+
+:root {
+  /* ---- palette: "ink & brass" ------------------------------------ */
+  --ink:        #0c0d11;   /* page background, deep blue-black      */
+  --ink-2:      #13151c;   /* raised panels / cards                 */
+  --ink-3:      #1b1e27;   /* hover / borders-as-fill               */
+  --paper:      #ece3d2;   /* primary text, warm parchment          */
+  --paper-soft: #cdc6b6;   /* secondary text                        */
+  --paper-mute: #8d8775;   /* muted / meta                          */
+  --brass:      #c9a227;   /* primary accent — aged brass           */
+  --brass-soft: #e4c878;   /* bright accent / display glow          */
+  --verd:       #6aa78c;   /* secondary accent — verdigris (status) */
+  --rose:       #c98a7d;   /* tertiary accent — for "open" status   */
+  --line:       rgba(236,227,210,.13);
+  --line-2:     rgba(236,227,210,.07);
+  --glow:       rgba(201,162,39,.30);
+
+  /* ---- type ------------------------------------------------------- */
+  --display: 'Fraunces', 'Times New Roman', serif;
+  --body:    'Newsreader', Georgia, serif;
+  --mono:    'IBM Plex Mono', ui-monospace, monospace;
+
+  --ease: cubic-bezier(.22,.61,.36,1);
+  --measure: 70ch;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background:
+    radial-gradient(130% 90% at 50% -15%, var(--ink-2) 0%, var(--ink) 58%) fixed,
+    var(--ink);
+  color: var(--paper);
+  font-family: var(--body);
+  font-size: 19px;
+  line-height: 1.72;
+  font-weight: 380;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* film grain — keeps flat dark from feeling cheap */
+body::after {
+  content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 50;
+  opacity: .04; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+::selection { background: var(--brass); color: var(--ink); }
+
+a { color: inherit; text-decoration: none; }
+
+.wrap { width: 100%; max-width: 1040px; margin: 0 auto; padding: 0 30px; }
+.measure { max-width: var(--measure); }
+
+/* ---- masthead (shared across all pages) -------------------------- */
+.masthead {
+  display: flex; align-items: baseline; justify-content: space-between;
+  padding: 30px 0 24px; border-bottom: 1px solid var(--line);
+  position: relative; z-index: 2;
+}
+.brand {
+  font-family: var(--display); font-weight: 600; font-size: 24px;
+  letter-spacing: .02em; color: var(--paper);
+}
+.brand .gk { color: var(--brass-soft); font-style: italic; font-weight: 400; }
+.masthead nav {
+  font-family: var(--mono); font-size: 12px; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--paper-mute);
+}
+.masthead nav a { transition: color .3s; }
+.masthead nav a:hover { color: var(--brass-soft); }
+
+/* ---- generic kicker / labels ------------------------------------- */
+.kicker {
+  font-family: var(--mono); font-size: 12px; letter-spacing: .26em;
+  text-transform: uppercase; color: var(--brass);
+  display: flex; align-items: center; gap: 13px;
+}
+.kicker::before { content: ""; width: 30px; height: 1px; background: var(--brass); }
+
+/* ---- status & tag pills ------------------------------------------ */
+.pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--mono); font-size: 11px; letter-spacing: .12em;
+  text-transform: uppercase; padding: 4px 11px; border-radius: 100px;
+  border: 1px solid var(--line); color: var(--paper-mute);
+}
+.pill.status-settled { color: var(--verd); border-color: color-mix(in srgb, var(--verd) 45%, transparent); }
+.pill.status-open    { color: var(--rose); border-color: color-mix(in srgb, var(--rose) 45%, transparent); }
+.pill.status-settled::before,
+.pill.status-open::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+
+.tag {
+  font-family: var(--mono); font-size: 12px; letter-spacing: .04em;
+  color: var(--paper-soft); padding: 3px 10px; border-radius: 4px;
+  background: var(--ink-3); border: 1px solid var(--line-2);
+  transition: background .3s, color .3s, border-color .3s;
+}
+a.tag:hover { color: var(--brass-soft); border-color: color-mix(in srgb, var(--brass) 40%, transparent); }
+
+/* ---- footer ------------------------------------------------------ */
+.site-foot {
+  margin-top: 90px; padding: 40px 0 60px; border-top: 1px solid var(--line);
+  font-family: var(--mono); font-size: 12px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--paper-mute);
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+}
+.site-foot .gk { font-family: var(--display); text-transform: none; letter-spacing: 0; color: var(--brass-soft); font-style: italic; }
+
+/* reveal on scroll (progressive enhancement; visible by default) */
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+.reveal.in { opacity: 1; transform: none; }
+.no-js .reveal { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+  .reveal { opacity: 1; transform: none; }
+}
+
+@media (max-width: 640px) {
+  body { font-size: 18px; }
+  .wrap { padding: 0 22px; }
+  .masthead { padding: 22px 0 18px; }
+}

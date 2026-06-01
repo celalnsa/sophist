@@ -1,0 +1,14 @@
+[project]
+name = "sophist"
+version = "0.1.0"
+description = "思辨对话录 — a themed, static archive of philosophy discussions held with machines"
+requires-python = ">=3.12"
+dependencies = [
+    "markdown>=3.6",
+    "python-frontmatter>=1.1",
+    "jinja2>=3.1",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
