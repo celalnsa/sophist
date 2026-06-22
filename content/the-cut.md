@@ -1,6 +1,6 @@
 ---
 title: 那一刀
-source_ai: Claude
+source_ai: Juex
 date_discussed: 2026-06-22
 themes: [价值判断, 共生, 慈悲, 佛教]
 thinkers: [佛教]
