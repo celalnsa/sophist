@@ -58,7 +58,8 @@ That's it — no HTML, no CSS. The page inherits the theme.
 Edit `theme/theme.css` (palette/type are CSS variables at the top) and/or the
 `templates/`. Every page re-renders from these, so one edit restyles the whole
 archive. Keep the temperament: dark, classical serif (Fraunces/Newsreader),
-single warm-brass accent, restrained — a 哲思 feel. See `.agents/skills/add-discussion`.
+single warm-brass accent, restrained — a 哲思 feel. For prose temperament, see
+`.agents/skills/_sophist-writing/standards.md`.
 
 ## Build & deploy
 
