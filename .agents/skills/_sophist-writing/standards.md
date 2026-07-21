@@ -68,7 +68,7 @@ Across genres, the recent ideal is:
   film, place, or small sensory detail is better than abstract mood.
 - Preserve tension. Do not smooth contradictions into a neat lesson.
 - Be honest about uncertainty. "我不知道" is often better than fake closure.
-- Let beauty come from taste and perception, not decorative adjectives.
+- Be honest, grounded, and pragmatic. Do not use high-flown, pretentious, or overly literary posturing. The writing must stay close to real human experience, avoiding artificial "aesthetic distance" or forced poetic minimalism.
 - Use the first person when it is the source of observation, not as self-display.
 - Prefer ordinary words. Repeat the right word instead of cycling synonyms.
 
@@ -85,8 +85,7 @@ but loses the user's posture is still wrong.
 
 Genre postures:
 
-- Essay: I am an observer. The reader walks beside me. I do not teach the
-  lesson; I let the scene reveal the pressure.
+- Essay: I am a practical observer sharing a real, grounded experience. I do not pretend to be profound. I write to connect, not to display aesthetic distance.
 - Year note: I am giving an honest account of one year's questions. The reader
   may disagree, but the account should not lie.
 - Technical article: I am someone who has tested or suffered through a problem.

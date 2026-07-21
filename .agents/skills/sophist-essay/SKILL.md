@@ -65,9 +65,7 @@ Useful local samples:
 
 - Fictional characters, invented dialogue, or cinematic atmosphere not supplied
   by the user.
-- Do not make the user literary by adding unsourced season, light, smell,
-  silence, street, wind, night, or other atmosphere. A rough true scene is
-  better than a pretty invented one.
+- Do not make the user "literary" or "poetic". The user demands grounded, sincere, pragmatic writing. Reject pretentious, high-flown minimalist posturing. A rough true scene is better than a pretty invented one.
 - "这不仅是...更是...", "在这个时代", "复杂而微妙的张力", "我们每个人都应该".
 - "看清这一点以后...", "怜悯变成责任", and similar emotional promotion unless
   the whole essay has earned that sentence.
